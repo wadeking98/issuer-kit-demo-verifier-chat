@@ -12,7 +12,7 @@ objects:
       name: ${NAME}-allow-ingress
       labels:
         name: ${NAME}-allow-ingress
-        app: ${APP_NAME}
+        app.kubernetes.io/part-of: ${APP_NAME}
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
@@ -27,7 +27,7 @@ objects:
       podSelector:
         matchLabels:
           role: ${ROLE}
-          app: ${APP_NAME}
+          app.kubernetes.io/part-of: ${APP_NAME}
           env: ${TAG_NAME}
       policyTypes:
         - Ingress
@@ -35,7 +35,7 @@ objects:
     kind: DeploymentConfig
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -57,7 +57,7 @@ objects:
       template:
         metadata:
           labels:
-            app: ${APP_NAME}${SUFFIX}
+            app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
             name: ${NAME}${SUFFIX}
             app-group: ${APP_GROUP}
             role: ${ROLE}
@@ -139,7 +139,7 @@ objects:
     kind: Service
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -160,7 +160,7 @@ objects:
     kind: Route
     metadata:
       labels:
-        app: ${APP_NAME}${SUFFIX}
+        app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
         name: ${NAME}${SUFFIX}
         app-group: ${APP_GROUP}
         role: ${ROLE}
@@ -183,7 +183,7 @@ objects:
   #     name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
   #     labels:
   #       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
-  #       app: ${APP_NAME}${SUFFIX}
+  #       app.kubernetes.io/part-of: ${APP_NAME}${SUFFIX}
   #       app-group: ${APP_GROUP}
   #       role: ${ROLE}
   #       env: ${TAG_NAME}
